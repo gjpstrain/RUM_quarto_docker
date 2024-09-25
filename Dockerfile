@@ -17,3 +17,4 @@ RUN R -e "require(devtools)"
 # tidyverse is included in rockerverse image
 
 RUN R -e "devtools::install_version('MASS', version = '7.3-61', dependencies = T)"
+RUN R -e "devtools::install_version('qwraps2', version = '0.6.0', dependencies = T)"

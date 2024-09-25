@@ -6,7 +6,7 @@ format: acm-pdf
 keep-tex: true
 
 params:
-  eval_models: false
+  eval_models: true
   
 knitr:
   opts_chunk: 
@@ -160,6 +160,8 @@ abstract: |
 
 ---
 
+
+
 # Introduction
 
 ```{r}
@@ -167,7 +169,30 @@ abstract: |
 
 library(tidyverse)
 library(MASS)
+library(qwraps2)
 ```
+
+```{r}
+#| label: lazyload-cache
+
+if (!params$eval_models){ lazyload_cache_dir("test_quart/pdf") }
+```
+
+```{r}
+#| label: model
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+n <- 100  
+x <- rnorm(n, mean = 5, sd = 2)  
+error <- rnorm(n, mean = 0, sd = 1)  
+y <- 3 + 2 * x + error  
+
+data <- data.frame(x = x, y = y)
+
+model <- lm(y ~ x, data = data)
+```
+
 
 Some text here. Citation demo [@Novak03]
 
