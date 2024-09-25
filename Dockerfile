@@ -16,4 +16,4 @@ RUN R -e "require(devtools)"
 
 # tidyverse is included in rockerverse image
 
-RUN R -e "devtools::install_version('MASS', version = '7.3-60.0.2', dependencies = T)"
+RUN R -e "devtools::install_version('MASS', version = '7.3-61', dependencies = T)"
